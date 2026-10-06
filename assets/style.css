@@ -26,7 +26,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: clip; }
+html { overflow-x: clip; }
+html:not(.js-anim) { scroll-behavior: smooth; }
+html.js-anim { scroll-behavior: auto; }   /* plynulý scroll řeší Lenis; CSS smooth s ním bojuje a trhá */
 body { margin: 0; background: var(--jahoda); color: var(--ink); font: 400 17px/1.7 var(--sans); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
@@ -430,6 +432,15 @@ h2 .hand { font-size: 1.16em; }
   .dalky b { font-size: 1.6rem; }
   .tabule { padding: 22px 20px; border-width: 9px; }
   .bubliny { width: min(280px, 82vw); }
+  /* výběr příchutě: malá fotka + název vedle sebe nad kruhem, ať je při klepnutí vidět výsledek */
+  .prichute__telo { grid-template-columns: 34vw minmax(0, 1fr); gap: 14px 16px; justify-items: stretch; text-align: left; margin-top: 20px; }
+  .prichute__foto { width: 100%; }
+  .prichute__info { align-self: center; }
+  .prichute__nazev { font-size: clamp(2rem, 9vw, 2.6rem); margin-bottom: 6px; }
+  .prichute__popis { font-size: .95rem; min-height: 0; }
+  .prichute__info .btn { margin-top: 10px; padding: 10px 16px; font-size: .9rem; }
+  .bubliny { grid-column: 1 / -1; justify-self: center; width: min(300px, 84vw); }
+  .prichute__sub { display: none; }
   .partner__cta { grid-auto-flow: row; }
 }
 

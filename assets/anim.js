@@ -7,10 +7,11 @@
   gsap.registerPlugin(window.ScrollTrigger, window.MotionPathPlugin, window.Draggable);
   const ST = window.ScrollTrigger;
   const mene = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const dotyk = matchMedia("(pointer: coarse)").matches;   // telefon/tablet: nativní scroll, bez vyhlazování
   document.documentElement.classList.add("js-anim");
 
   /* ---- plynulý scroll ---- */
-  if (window.Lenis && !mene) {
+  if (window.Lenis && !mene && !dotyk) {
     const lenis = new window.Lenis({ duration: 1.05, smoothWheel: true });
     window.lenis = lenis;
     lenis.on("scroll", ST.update);
@@ -118,7 +119,7 @@
     gsap.utils.toArray(".uvod__bok").forEach((fig, i) => {
       gsap.to(fig, {
         yPercent: -18, xPercent: i === 0 ? -14 : 14, ease: "none",
-        scrollTrigger: { trigger: ".blok--uvod", start: "top top", end: "bottom top", scrub: .6 },
+        scrollTrigger: { trigger: ".blok--uvod", start: "top top", end: "bottom top", scrub: dotyk ? true : .6 },
       });
     });
   }
@@ -126,7 +127,7 @@
   /* ---- parallax fotek ---- */
   if (!mene) {
     gsap.utils.toArray(".polozka__foto img").forEach(img => {
-      gsap.fromTo(img, { y: -10 }, { y: 10, ease: "none", scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: .8 } });
+      gsap.fromTo(img, { y: -10 }, { y: 10, ease: "none", scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: dotyk ? true : .8 } });
     });
   }
 
