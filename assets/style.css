@@ -432,6 +432,12 @@ h2 .hand { font-size: 1.16em; }
   .dalky b { font-size: 1.6rem; }
   .tabule { padding: 22px 20px; border-width: 9px; }
   .bubliny { width: min(280px, 82vw); }
+  /* Caveat má o dost nižší střední výšku než Lato, takže při stejné velikosti
+     působí drobně a slabě. Na úzkém displeji jsou nadpisy u spodní hranice
+     clamp(), kde je ten rozdíl nejvíc vidět — ruční slovo proto zvětšíme.
+     1,32 je strop, při kterém se nadpisy ještě vejdou na jeden řádek. */
+  h2 .hand, .prichute__title .hand { font-size: 1.32em; }
+  .blok--uvod h1 .hand { font-size: 1.3em; }
   /* výběr příchutě: malá fotka + název vedle sebe nad kruhem, ať je při klepnutí vidět výsledek */
   .prichute__telo { grid-template-columns: 34vw minmax(0, 1fr); gap: 14px 16px; justify-items: stretch; text-align: left; margin-top: 20px; }
   .prichute__foto { width: 100%; }
