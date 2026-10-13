@@ -104,7 +104,7 @@ window.ZD = (function () {
     const pozn = box.querySelector(".dnes__pozn");
     if (pozn) {
       pozn.textContent = neznamych
-        ? "Další dvojice měníme skoro každý den — co je dnes, píšeme na Instagram."
+        ? "Další dvojice měníme skoro každý den – co je dnes, píšeme na Instagram."
         : "Dvojice měníme skoro každý den.";
     }
   }
@@ -188,9 +188,9 @@ window.ZD = (function () {
         const li = document.createElement("li");
         if (a.stav === "mimo") {
           li.className = "pata__mimo";
-          li.textContent = `${a.mesto} — dočasně mimo provoz`;
+          li.textContent = `${a.mesto} – dočasně mimo provoz`;
         } else {
-          li.textContent = `${a.mesto} — ${a.adresa}`;
+          li.textContent = `${a.mesto} – ${a.adresa}`;
         }
         vPate.appendChild(li);
       });
