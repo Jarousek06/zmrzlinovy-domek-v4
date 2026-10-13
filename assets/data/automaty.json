@@ -4,7 +4,7 @@
     "id": "domek", "nazev": "Zmrzlinový domek", "mesto": "Nučnice",
     "adresa": "Nučnice 40, 411 48 Křešice", "poznamka": "u přívozu přes Labe",
     "lat": 50.50801, "lng": 14.22750, "stav": "provoz", "overeno": false,
-    "mapa": "https://mapy.cz/s/febajaroma"
+    "mapa": "https://www.google.com/maps/dir/?api=1&destination=Zmrzlinov%C3%BD%20domek%2C%20Nu%C4%8Dnice%2040%2C%20411%2048%20K%C5%99e%C5%A1ice"
   },
   "automaty": [
     { "id": "steti", "mesto": "Štětí", "adresa": "Litoměřická 722",

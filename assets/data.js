@@ -11,7 +11,7 @@
 window.ZD = (function () {
   "use strict";
 
-  const VERZE = "5";
+  const VERZE = "6";
   const CESTA = "assets/data/";
 
   /* ---------- vestavěná záloha ---------- */
@@ -35,7 +35,7 @@ window.ZD = (function () {
       ],
     },
     automaty: {
-      domek: { id: "domek", nazev: "Zmrzlinový domek", mesto: "Nučnice", adresa: "Nučnice 40, 411 48 Křešice", poznamka: "u přívozu přes Labe", lat: 50.50801, lng: 14.2275, stav: "provoz", overeno: false, mapa: "https://mapy.cz/s/febajaroma" },
+      domek: { id: "domek", nazev: "Zmrzlinový domek", mesto: "Nučnice", adresa: "Nučnice 40, 411 48 Křešice", poznamka: "u přívozu přes Labe", lat: 50.50801, lng: 14.2275, stav: "provoz", overeno: false, mapa: "https://www.google.com/maps/dir/?api=1&destination=Zmrzlinov%C3%BD%20domek%2C%20Nu%C4%8Dnice%2040%2C%20411%2048%20K%C5%99e%C5%A1ice" },
       automaty: [
         { id: "steti", mesto: "Štětí", adresa: "Litoměřická 722", lat: 50.4574, lng: 14.36944, stav: "provoz", poznamka: null, overeno: false },
         { id: "roudnice", mesto: "Roudnice nad Labem", adresa: "Hornická 2500", lat: 50.42585, lng: 14.23866, stav: "provoz", poznamka: null, overeno: false },
@@ -168,7 +168,7 @@ window.ZD = (function () {
       data.automaty.automaty.forEach(a => {
         const odkaz = document.createElement("a");
         odkaz.className = "misto" + (a.stav === "mimo" ? " misto--mimo" : "");
-        odkaz.href = "https://mapy.cz/?q=" + encodeURIComponent(a.adresa + ", " + a.mesto);
+        odkaz.href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(a.adresa + ", " + a.mesto);
         odkaz.target = "_blank";
         odkaz.rel = "noopener";
         odkaz.dataset.automat = a.id;

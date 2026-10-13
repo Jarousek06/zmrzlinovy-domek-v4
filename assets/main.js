@@ -85,4 +85,17 @@ links.addEventListener("click", e => {
   }
 });
 
+// Mapa Google: dokud na ni člověk neklepne, kolečko i prst posouvají stránku (ne mapu).
+// Po odjetí myší / klepnutí mimo se zase zamkne.
+(function mapa() {
+  const box = document.getElementById("mapa");
+  if (!box) return;
+  const stit = box.querySelector(".mapa__stit");
+  const frame = box.querySelector("iframe");
+  const zamknout = () => { box.classList.remove("is-aktivni"); frame.tabIndex = -1; };
+  stit.addEventListener("click", () => { box.classList.add("is-aktivni"); frame.tabIndex = 0; frame.focus(); });
+  box.addEventListener("mouseleave", zamknout);
+  document.addEventListener("pointerdown", e => { if (!box.contains(e.target)) zamknout(); });
+})();
+
 document.getElementById("year").textContent = new Date().getFullYear();
