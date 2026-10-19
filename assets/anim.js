@@ -61,15 +61,23 @@
     return kusy;
   }
 
-  document.querySelectorAll("[data-reveal]").forEach(el => {
-    const kusy = rozlozit(el, el.dataset.reveal);
-    if (!kusy.length || mene) return;
-    gsap.from(kusy, {
-      yPercent: 118, rotate: 4, opacity: 0, duration: .8, ease: "back.out(1.6)",
-      stagger: el.dataset.reveal === "chars" ? .028 : .05,
-      scrollTrigger: { trigger: el, start: "top 90%", once: true },
+  // Nadpisy se dělí až po načtení fontů (jinak se text po výměně písma přelamuje a skáče).
+  // Na telefonu se dělí jen po slovech: písmeno po písmenu ruší kerning a spojitost písma Caveat.
+  const pripravNadpisy = () => {
+    document.querySelectorAll("[data-reveal]").forEach(el => {
+      const druh = dotyk || innerWidth < 720 ? "words" : el.dataset.reveal;
+      const kusy = rozlozit(el, druh);
+      if (!kusy.length || mene) return;
+      gsap.from(kusy, {
+        yPercent: 118, rotate: 4, opacity: 0, duration: .8, ease: "back.out(1.6)",
+        stagger: druh === "chars" ? .028 : .05,
+        scrollTrigger: { trigger: el, start: "top 90%", once: true },
+      });
     });
-  });
+    ST.refresh();
+  };
+  const fontyHotove = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
+  Promise.race([fontyHotove, new Promise(r => setTimeout(r, 1500))]).then(pripravNadpisy);
 
   /* ---- vynoření bloků ---- */
   if (!mene) [".polozka", ".misto", ".citace__mrizka blockquote", ".polaroidy figure", ".fakta li", ".ceny li", ".odrazky li", ".dotazy details"].forEach(sel => {
