@@ -56,6 +56,8 @@
     };
     [...el.childNodes].forEach(n => {
       if (n.nodeType === 3) obal(n);
+      // ruční písmo (Caveat) je spojité: nedělit na slova ani písmena, animuje se celé najednou
+      else if (n.nodeType === 1 && n.classList.contains("hand")) kusy.push(n);
       else if (n.nodeType === 1) [...n.childNodes].forEach(m => m.nodeType === 3 && obal(m));
     });
     return kusy;
@@ -71,6 +73,7 @@
       gsap.from(kusy, {
         yPercent: 118, rotate: 4, opacity: 0, duration: .8, ease: "back.out(1.6)",
         stagger: druh === "chars" ? .028 : .05,
+        clearProps: "transform,opacity",   // po animaci pryč s vrstvou, ať se text vykreslí ostře (Safari)
         scrollTrigger: { trigger: el, start: "top 90%", once: true },
       });
     });

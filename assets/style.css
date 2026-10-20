@@ -40,7 +40,7 @@ p { margin: 0 0 1em; }
 ::selection { background: var(--ink); color: var(--krem); }
 :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
 section[id] { scroll-margin-top: 80px; }
-.hand { font-family: var(--hand); font-weight: 700; letter-spacing: 0; line-height: 1.16; display: inline-block; padding-bottom: .08em; margin-bottom: -.06em; }
+.hand { font-family: var(--hand); font-weight: 700; letter-spacing: 0; line-height: 1.16; display: inline-block; padding: 0 .1em .08em 0; margin: 0 -.1em -.06em 0; }
 .skip { position: absolute; left: -9999px; }
 .skip:focus { left: 12px; top: 12px; z-index: 99; background: #fff; padding: 10px 16px; border-radius: 12px; }
 
@@ -400,7 +400,7 @@ h2 .hand { font-size: 1.16em; }
 /* ---------- skládání nadpisů ---------- */
 .spw { display: inline-block; white-space: nowrap; }
 .sp { display: inline-block; overflow: hidden; vertical-align: baseline; padding: .22em .04em .26em; margin: -.22em -.04em -.26em; }
-.sp__i { display: inline-block; will-change: transform; }
+.sp__i { display: inline-block; }
 .hand .sp { overflow: visible; padding: 0 .06em; margin: 0 -.06em; }
 
 /* ---------- responzivita ---------- */
